@@ -1,0 +1,60 @@
+---
+
+- import_tasks: epel-release.yml
+
+- name: include os-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+    - defaults.yml
+  tags:
+    - common
+
+- name: install common packages|yum
+  ansible.builtin.yum: name="{{ common_packages }}" state=present enablerepo=epel
+  when: ansible_facts.os_family == "RedHat"
+  tags:
+    - common
+
+- name: install common apps|apt
+  ansible.builtin.apt: name="{{ common_packages }}" state=present update_cache=yes cache_valid_time=3600
+  when: ansible_facts.os_family == "Debian"
+  tags:
+    - common
+    - common-debian
+
+- name: register result to print with debug later
+  ansible.builtin.yum:
+    list: installed
+  register: pkgs_rhel
+  when: ansible_facts.os_family == "RedHat"
+  tags:
+    - common
+    - common-rhel
+
+- name: register result to print with debug later
+  ansible.builtin.shell: dpkg-query -f '${binary:Package}\n' -W
+  register: pkgs_debian
+  when: ansible_facts.os_family == "Debian"
+  tags:
+    - common
+    - common-debian
+
+- name: disable firewalld service
+  ansible.builtin.systemd_service:
+    name: firewalld
+    state: stopped
+    enabled: no
+  when: ansible_facts.os_family == "RedHat"
+  tags:
+    - common
+    - common-firewalld
+
+- name: set selinux to permissive mode
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+  when: ansible_facts.os_family == "RedHat" and selinux_set_permissive|bool == true
+  tags:
+    - common-rhel
+    - common-selinux

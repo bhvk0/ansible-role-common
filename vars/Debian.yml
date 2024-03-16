@@ -1,0 +1,18 @@
+---
+
+common_packages:
+    - mc
+    - atop
+    - htop
+    - nano
+    - sudo
+    - wget
+    - curl
+    - unzip
+    - telnet
+    - lsof
+    - build-essential
+    - software-properties-common
+    - apt-transport-https
+    - ca-certificates
+    - gnupg-agent

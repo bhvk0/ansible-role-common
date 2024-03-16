@@ -1,0 +1,20 @@
+---
+
+selinux_set_permissive: false
+common_packages:
+    - mc
+    - atop
+    - htop
+    - nano
+    - sudo
+    - wget
+    - curl
+    - unzip
+    - telnet
+    - lsof
+    - net-tools
+    - libselinux-python
+    - libsemanage-python
+    - policycoreutils-python
+    - yum-utils
+    - lvm2

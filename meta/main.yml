@@ -1,0 +1,37 @@
+galaxy_info:
+  namespace: "delogic-ou"
+  role_name: "common"
+  version: "1.0.0"
+  readme: "README.md"
+  authors:
+    - "Oleksandr Bohovyk <sre@delogic.io>"
+  description: "Most common linux packages"
+  company: "Delogic OU"
+
+  issue_tracker_url: https://github.com/delogic-ou/ansible-role-common/issues
+  license: "MIT"
+
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Debian
+      versions:
+       - buster
+       - bullseye
+       - bookworm
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - jammy
+    - name: RedHat
+      versions:
+        - 7
+        - 8
+        - 9
+
+  galaxy_tags:
+    - system
+    - server
+    - orchestration
+
+dependencies: []
