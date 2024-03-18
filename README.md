@@ -2,7 +2,7 @@
 
 [![ansible-lint](https://github.com/bhvk0/ansible-role-common/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/bhvk0/ansible-role-common/actions/workflows/ansible-lint.yml)
 [![Galaxy Role](https://img.shields.io/ansible/role/d/bhvk0/common)](https://galaxy.ansible.com/bhvk0/common)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-violet.svg)](https://opensource.org/licenses/MIT)
 
 Requirements
 ------------
